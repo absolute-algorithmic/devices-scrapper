@@ -131,6 +131,8 @@ async function appendDevicesToFile(devices: Device[]) {
 }
 
 async function main() {
+    console.log("Starting the scraping process...");
+
     const max_device_id = 2334;
     let devices: Device[] = [];
 
@@ -144,6 +146,7 @@ async function main() {
                 try {
                     let data = await scrapeDeviceData(i, firmware, firmwareUrl);
                     devices.push(data);
+                    console.log(`Scraped data for device ${i} firmware ${firmware.id}`);
                 } catch (error) {
                     console.error(`Failed to scrape device data for device ${i}: ${error}`);
                     continue;
